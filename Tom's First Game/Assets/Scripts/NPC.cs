@@ -9,7 +9,7 @@ public class NPC : MonoBehaviour,IInteractable
 
     private void Start()
     {
-        _dialoguetriggers = GetComponents<DialogueTrigger>();
+        _dialoguetriggers = GetComponentsInChildren<DialogueTrigger>();
     }
 
     public void InteractedWith() 

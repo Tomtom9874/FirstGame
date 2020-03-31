@@ -13,7 +13,7 @@ public class Item : MonoBehaviour, IInteractable
     {
         _position = GetComponent<Transform>().position;
         _destroyer = GetComponent<OnDestroy>();
-        _dialogueTrigger = GetComponent<DialogueTrigger>();
+        _dialogueTrigger = GetComponentInChildren<DialogueTrigger>();
     }
 
     public void InteractedWith() 
