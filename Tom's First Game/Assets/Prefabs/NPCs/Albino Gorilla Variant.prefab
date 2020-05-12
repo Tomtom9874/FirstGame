@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7612784212960434165
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3210965605510471143, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 158959290995379522, guid: 3976bf9d60df6c14b817b6a6e63870a3,
+        type: 3}
+    - target: {fileID: 3787735426019210224, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.1151624
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787735426019210224, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.05318165
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787735426019210224, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.009598362
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787735426019210224, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787735426019210224, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787735426019210224, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787735426019210224, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787735426019210224, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787735426019210224, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787735426019210224, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787735426019210224, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215978604244336369, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d93fd827a84f28e4e893eb11ab0a8b85, type: 2}
+    - target: {fileID: 8510714384251689937, guid: fa2294b211316aa499f16d26c7ca6de5,
+        type: 3}
+      propertyPath: m_Name
+      value: Albino Gorilla
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fa2294b211316aa499f16d26c7ca6de5, type: 3}

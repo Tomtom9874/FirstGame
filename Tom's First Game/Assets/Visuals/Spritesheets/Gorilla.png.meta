@@ -42,7 +42,7 @@ TextureImporter:
       213: -7871168684150249626
     second: Gorilla_6
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -96,6 +96,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -128,8 +129,8 @@ TextureImporter:
       name: Gorilla_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 239
+        x: 0
+        y: 0
         width: 16
         height: 16
       alignment: 7
@@ -139,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb98e837435d83730800000000000000
-      internalID: 3979164692035570110
+      spriteID: 7451db34ee0cdb150800000000000000
+      internalID: 5890076017241691463
       vertices: []
       indices: 
       edges: []
@@ -149,8 +150,8 @@ TextureImporter:
       name: Gorilla_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 239
+        x: 18
+        y: 0
         width: 16
         height: 16
       alignment: 7
@@ -160,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb835a08f4a48edf0800000000000000
-      internalID: -150788882195728197
+      spriteID: cb0d8a49d12e64020800000000000000
+      internalID: 2325794874259460284
       vertices: []
       indices: 
       edges: []
@@ -170,8 +171,8 @@ TextureImporter:
       name: Gorilla_2
       rect:
         serializedVersion: 2
-        x: 37
-        y: 239
+        x: 36
+        y: 0
         width: 16
         height: 16
       alignment: 7
@@ -181,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59e8db64762b7adc0800000000000000
-      internalID: -3627734818185441643
+      spriteID: 50db45033e5777120800000000000000
+      internalID: 2411525744109075717
       vertices: []
       indices: 
       edges: []
@@ -191,8 +192,8 @@ TextureImporter:
       name: Gorilla_3
       rect:
         serializedVersion: 2
-        x: 55
-        y: 239
+        x: 54
+        y: 0
         width: 16
         height: 16
       alignment: 7
@@ -202,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42d481354254d7bf0800000000000000
-      internalID: -325027575785566940
+      spriteID: 656c0db2cec9e7250800000000000000
+      internalID: 5944361096336950870
       vertices: []
       indices: 
       edges: []
@@ -212,8 +213,8 @@ TextureImporter:
       name: Gorilla_4
       rect:
         serializedVersion: 2
-        x: 73
-        y: 239
+        x: 72
+        y: 0
         width: 16
         height: 16
       alignment: 7
@@ -223,29 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 844625e8c7aa0f310800000000000000
-      internalID: 1436835733071619144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gorilla_5
-      rect:
-        serializedVersion: 2
-        x: 91
-        y: 239
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8e6ee24f0e6af9e0800000000000000
-      internalID: -1586834906868191606
+      spriteID: b9188bbfcfe423c50800000000000000
+      internalID: 6643459248786801051
       vertices: []
       indices: 
       edges: []

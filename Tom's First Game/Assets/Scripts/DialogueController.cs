@@ -27,8 +27,11 @@ public class DialogueController : MonoBehaviour
     private bool _choiceLoaded = false;
     private bool _isChoosing = false;
     private bool _yesSelected = true;
+    private DialogueNode _currentNode;
+    
     public string ChoiceText{get {return _choiceText;} set {_choiceText=value;}}
     public bool ChoiceLoaded{get {return _choiceLoaded;} set{_choiceLoaded=value;}}
+
 
     // Start is called before the first frame update
     void Start()
@@ -68,15 +71,17 @@ public class DialogueController : MonoBehaviour
         }
     }
  
-    public void StartDialogue(string [] sentences)
+    public void StartDialogue(DialogueNode node)
     {
+        _currentNode = node;
+        
         _isActive = true;
         _dialogueCanvas.SetActive(true);
         _choiceCanvas.SetActive(false);
         _playerScript.CanMove = false;
         _interactor.StartConversation();
         _lines.Clear();
-        foreach(string sentence in sentences){
+        foreach(string sentence in _currentNode.Dialogue){
             _lines.Enqueue(sentence);
         }
         if (_lines.Count == 0) DialogueEmpty();
@@ -136,6 +141,7 @@ public class DialogueController : MonoBehaviour
         _isActive = false;
         _choiceLoaded = false;
         _isChoosing = false;
+        _currentNode.AdvanceNode();
     }
 
     private void DialogueEmpty()
