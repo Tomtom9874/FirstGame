@@ -34,6 +34,6 @@ public class InventoryConditionedDialogueData : AbstractDialogueData, IDialogueD
 
     private bool ConditionMet()
     {
-        return GlobalPlayerController.ItemCount(_itemNode.Item) >= _itemNode.ItemCount;
+        return GlobalInventoryController.ItemCount(_itemNode.Item) >= _itemNode.ItemCount;
     }
 }

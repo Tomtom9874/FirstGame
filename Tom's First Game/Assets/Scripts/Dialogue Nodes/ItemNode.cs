@@ -13,6 +13,6 @@ public class ItemNode : MonoBehaviour
 
     public void ModifyItemCount() 
     {
-        if (_isItemCountChanger) GlobalPlayerController.AddItem(Item, ItemCount);
+        if (_isItemCountChanger) GlobalInventoryController.AddItem(Item, ItemCount);
     }
 }

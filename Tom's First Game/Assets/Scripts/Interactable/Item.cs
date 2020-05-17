@@ -20,6 +20,6 @@ public class Item : MonoBehaviour, IInteractable
     {
         _dialogueData.TriggerDialogue();
         _destroyer.SelfDestruct();
-        GlobalPlayerController.AddItem(_name, 1);
+        GlobalInventoryController.AddItem(_name, 1);
     }
 }

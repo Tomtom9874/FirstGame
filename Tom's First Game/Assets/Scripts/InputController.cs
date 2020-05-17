@@ -21,7 +21,7 @@ public class InputController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift)) _movement.ToggleSprintOff();
         AxisInput();
         if (Input.GetKeyDown(KeyCode.Space)) GlobalPlayerController.PrintDecisions();
-        if (Input.GetKeyDown(KeyCode.I)) GlobalPlayerController.PrintInventory();
+        if (Input.GetKeyDown(KeyCode.I)) GlobalInventoryController.PrintInventory();
         
     }
 
