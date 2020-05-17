@@ -24,8 +24,13 @@ public class InventoryItem : MonoBehaviour
             if (text.GetTextType() == "Item Count"){
                 itemCountTextBox = text;
             }
-
         }
+        itemImage = GetComponentsInChildren<Image>()[0];
+    }
+
+    public void SetImage(Sprite sprite)
+    {
+        itemImage.sprite = sprite;
     }
 
     private void Update()
@@ -35,4 +40,5 @@ public class InventoryItem : MonoBehaviour
         itemCountTextBox.SetText(itemCountString);
         descriptionTextBox.SetText(descriptionText);
     }
+
 }
