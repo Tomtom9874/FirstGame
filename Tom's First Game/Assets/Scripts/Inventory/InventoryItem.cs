@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
-    [SerializeField]
-    private string item = "NULL";
-    [SerializeField]
-    private string descriptionText = "NULL";
+    private Item item;
+    private string itemName = "NULL";
+    private string itemDescription = "NULL";
     private Image itemImage;
     private InventoryItemText descriptionTextBox;
     private InventoryItemText itemCountTextBox;
@@ -25,20 +24,23 @@ public class InventoryItem : MonoBehaviour
                 itemCountTextBox = text;
             }
         }
-        itemImage = GetComponentsInChildren<Image>()[0];
+        itemImage = GetComponentsInChildren<Image>()[1];
     }
 
-    public void SetImage(Sprite sprite)
+    public void SetItem(Item i)
     {
-        itemImage.sprite = sprite;
+        item = i;
+        itemName = item.GetName();
+        itemDescription = item.GetDescription();
+        itemImage.sprite = item.GetSprite();
     }
 
     private void Update()
     {
-        int itemCount = GlobalInventoryController.ItemCount(item);
+        int itemCount = GlobalInventoryController.ItemCount(itemName);
         string itemCountString = itemCount.ToString();
         itemCountTextBox.SetText(itemCountString);
-        descriptionTextBox.SetText(descriptionText);
+        descriptionTextBox.SetText(itemDescription);
     }
 
 }

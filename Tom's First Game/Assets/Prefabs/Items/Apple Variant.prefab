@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: _name
       value: Apple
       objectReference: {fileID: 0}
+    - target: {fileID: 1359655151989293515, guid: d0e4b14645b91b944a3a55472a7dba7f,
+        type: 3}
+      propertyPath: _description
+      value: A Juicy Apple
+      objectReference: {fileID: 0}
     - target: {fileID: 1807717522273085832, guid: d0e4b14645b91b944a3a55472a7dba7f,
         type: 3}
       propertyPath: m_LocalPosition.x

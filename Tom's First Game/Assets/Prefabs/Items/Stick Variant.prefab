@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: _name
       value: Stick
       objectReference: {fileID: 0}
+    - target: {fileID: 2225774536817198744, guid: ca613599fe234254fa3f6075381fcafd,
+        type: 3}
+      propertyPath: _description
+      value: A dry stick.
+      objectReference: {fileID: 0}
     - target: {fileID: 3524704154738594750, guid: ca613599fe234254fa3f6075381fcafd,
         type: 3}
       propertyPath: _dialogue.Array.data[0]
