@@ -35,12 +35,22 @@ public class InventoryItem : MonoBehaviour
         itemImage.sprite = item.GetSprite();
     }
 
+    public string GetItemName()
+    {
+        return itemName;
+    }
+
     private void Update()
     {
         int itemCount = GlobalInventoryController.ItemCount(itemName);
         string itemCountString = itemCount.ToString();
         itemCountTextBox.SetText(itemCountString);
         descriptionTextBox.SetText(itemDescription);
+    }
+
+    public void DeleteSlot()
+    {
+        Destroy(gameObject);
     }
 
 }
