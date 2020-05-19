@@ -6,58 +6,62 @@ using UnityEngine.UI;
 public class InventoryGUI : MonoBehaviour
 {
     [SerializeField]
-    private InventoryItem slot = null;
-    private Transform GUITransform;
-    private Vector3 offset;
-    private List<InventoryItem> slots = new List<InventoryItem>();
-    private int finalSlotIndex = 0; 
+    private InventoryItem _slot = null;
+    private Transform _GUITransform;
+    private Vector3 _offset;
+    private List<InventoryItem> _slots = new List<InventoryItem>();
+    private int _finalSlotIndex = 0; 
 
     [SerializeField]
-    private Item nextItem = null;
+    private List<Item> _allItems = new List<Item>();
 
     private void Start()
     {
-        GUITransform = GetComponent<Transform>();
-        offset = new Vector3(0, 5, 0);
+        _GUITransform = GetComponent<Transform>();
+        _offset = new Vector3(0, 5, 0);
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            CreateNewSlot(nextItem);
+            CreateNewSlot(_allItems[0]);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            DeleteSlot(nextItem);
+            DeleteSlot(_allItems[0]);
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log(_allItems);
         }
     }
     public void CreateNewSlot(Item i)
     {
         InventoryItem slotInstance;
         Debug.Log("SlotInstance");
-        slotInstance = Instantiate(slot, GUITransform.position + SlotPosition(finalSlotIndex), Quaternion.identity, GUITransform) as InventoryItem;
-        finalSlotIndex++;
+        slotInstance = Instantiate(_slot, _GUITransform.position + SlotPosition(_finalSlotIndex), Quaternion.identity, _GUITransform) as InventoryItem;
+        _finalSlotIndex++;
         slotInstance.SetItem(i);
-        slots.Add(slotInstance);
+        _slots.Add(slotInstance);
     }
 
     public void DeleteSlot(Item deleteItem)
     {
         Debug.Log("DeleteSlot");
         string itemName = deleteItem.GetName();
-        for (int i = slots.Count - 1; i >= 0; i--)
+        for (int i = _slots.Count - 1; i >= 0; i--)
         {
-            if (slots[i].GetItemName() == itemName){
-                slot = slots[i];
-                slots.Remove(slot);
+            if (_slots[i].GetItemName() == itemName){
+                InventoryItem slot = _slots[i];
+                _slots.Remove(slot);
                 slot.DeleteSlot();
-                finalSlotIndex--;
+                _finalSlotIndex--;
             }
         }
     }
 
     private Vector3 SlotPosition(int index)
     {
-        return offset + new Vector3(0, -1, 0) * index;
+        return _offset + new Vector3(0, -1, 0) * index;
     }
 }

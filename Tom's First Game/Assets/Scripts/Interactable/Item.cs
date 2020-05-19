@@ -39,6 +39,7 @@ public class Item : MonoBehaviour, IInteractable
 
     public Sprite GetSprite()
     {
+        _image = GetComponent<SpriteRenderer>();
         if (_image == null){
             Debug.Log("The image is null");
         }
