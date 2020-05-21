@@ -21,6 +21,8 @@ public class InventoryConditionedDialogueData : AbstractDialogueData, IDialogueD
 
     public void TriggerDialogue() 
     {
+        Debug.Log("ICDD Trigger Dialogue");
+        _itemNode.ModifyItemCount();
         Node.IsActive = false;
         Controller.StartDialogue(Node);
         Controller.ChoiceLoaded = false;
@@ -34,6 +36,6 @@ public class InventoryConditionedDialogueData : AbstractDialogueData, IDialogueD
 
     private bool ConditionMet()
     {
-        return GlobalInventoryController.ItemCount(_itemNode.Item) >= _itemNode.ItemCount;
+        return GlobalInventoryController.ItemCount(_itemNode.Item.GetName()) >= _itemNode.ItemCount;
     }
 }

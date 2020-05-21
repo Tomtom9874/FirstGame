@@ -6,11 +6,13 @@ public class InputController : MonoBehaviour
 {
     private PlayerController _movement;
     private Interactor _interactor;
+    private InventoryGUI _inventoryGui;
     
     void Awake()
     {
         _movement = FindObjectOfType<PlayerController>();    
         _interactor = FindObjectOfType<Interactor>();
+        _inventoryGui = FindObjectOfType<InventoryGUI>();
     }
 
     void Update()
@@ -21,8 +23,10 @@ public class InputController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift)) _movement.ToggleSprintOff();
         AxisInput();
         if (Input.GetKeyDown(KeyCode.Space)) GlobalPlayerController.PrintDecisions();
-        if (Input.GetKeyDown(KeyCode.I)) GlobalInventoryController.PrintInventory();
-        
+        if (Input.GetKeyDown(KeyCode.I)) 
+        {
+            _inventoryGui.ToggleGui();
+        }
     }
 
     private void AxisInput()

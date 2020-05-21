@@ -23,8 +23,8 @@ public class Item : MonoBehaviour, IInteractable
     public void InteractedWith() 
     {
         _dialogueData.TriggerDialogue();
-        _destroyer.SelfDestruct();
         GlobalInventoryController.AddItem(_name, 1);
+        _destroyer.SelfDestruct();
     }
 
     public string GetName()

@@ -23,16 +23,17 @@ public class DialogueNode  : MonoBehaviour
         _itemNode = GetComponent<ItemNode>();
     }
 
-    public void TriggerDialogue(){_dialogueData.TriggerDialogue();}
+    public void TriggerDialogue()
+    {
+        _dialogueData.TriggerDialogue();
+    }
 
     public void AdvanceNode()
     {
         _dialogueData.AdvanceNode();
-        if (_itemNode != null) {
+        if (_itemNode != null) 
+        {
             _itemNode.ModifyItemCount();
         }
-        
-
     }
-
 }

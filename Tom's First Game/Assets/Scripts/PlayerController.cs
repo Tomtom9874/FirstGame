@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     // Getters
     public Vector2 LookDirection {get{return _lookDirection;}}
     public bool IsMoving {get{return _isMoving;}}
-    public bool CanMove{set{_canMove = value;}}
+    public bool CanMove{set{_canMove = value;}get{return _canMove;}}
     public Vector2 MoveDirection{set{_moveDirection=value;}}
 
     private void Start()
@@ -76,6 +76,12 @@ public class PlayerController : MonoBehaviour
     }
 
     // Public Methods
-    public void ToggleSprintOn(){_speed *= _sprintFactor;}
-    public void ToggleSprintOff(){_speed /= _sprintFactor;}
+    public void ToggleSprintOn()
+    {
+        _speed *= _sprintFactor;
+    }
+    public void ToggleSprintOff()
+    {
+        _speed /= _sprintFactor;
+    }
 }

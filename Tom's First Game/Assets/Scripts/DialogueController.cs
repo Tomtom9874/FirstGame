@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
-    public TextMeshProUGUI _dialogueText;
+    [SerializeField] private TextMeshProUGUI _dialogueText = null;
     public Image _yesArrow;
     public Image _noArrow;
     public GameObject _dialogueCanvas;
@@ -18,11 +18,11 @@ public class DialogueController : MonoBehaviour
     
     private PlayerController _playerScript;
     private Interactor _interactor;
-    private Queue<string> _lines;
-    private int _delay;
-    private bool _isSpeaking;
+    private Queue<string> _lines = new Queue<string>();
+    private int _delay = 0;
+    private bool _isSpeaking = false;
     private int _remainingCharacters;
-    private bool _isActive;
+    private bool _isActive = false;
     private string _choiceText;
     private bool _choiceLoaded = false;
     private bool _isChoosing = false;
@@ -33,23 +33,21 @@ public class DialogueController : MonoBehaviour
     public bool ChoiceLoaded{get {return _choiceLoaded;} set{_choiceLoaded=value;}}
 
 
-    // Start is called before the first frame update
     void Start()
     {
         _dialogueCanvas.SetActive(false);
-        _lines = new Queue<string>();
-        _isSpeaking = false;
-        _delay = 0;
         _playerScript = FindObjectOfType<PlayerController>();
         _interactor = FindObjectOfType<Interactor>();
-        _isActive = false;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (_isActive && !_isChoosing) advanceDialogue();
+            if (_isActive && !_isChoosing) 
+            {
+                advanceDialogue();
+            }
             if (_isChoosing && _remainingCharacters < 1) 
             {
                 GlobalPlayerController.AddDecision(_choiceText, _yesSelected);
@@ -74,14 +72,14 @@ public class DialogueController : MonoBehaviour
     public void StartDialogue(DialogueNode node)
     {
         _currentNode = node;
-        
         _isActive = true;
         _dialogueCanvas.SetActive(true);
         _choiceCanvas.SetActive(false);
         _playerScript.CanMove = false;
         _interactor.StartConversation();
         _lines.Clear();
-        foreach(string sentence in _currentNode.Dialogue){
+        foreach(string sentence in _currentNode.Dialogue)
+        {
             _lines.Enqueue(sentence);
         }
         if (_lines.Count == 0) DialogueEmpty();

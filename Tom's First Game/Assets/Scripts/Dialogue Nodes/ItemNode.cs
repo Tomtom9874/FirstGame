@@ -5,14 +5,26 @@ using UnityEngine;
 public class ItemNode : MonoBehaviour
 {
     [SerializeField] private bool _isItemCountChanger = false;
-    [SerializeField] private string _item = "null";
+    [SerializeField] private Item _item = null;
     [SerializeField] private int _itemCount = 0;
 
-    public string Item{get{return _item;}}
+    public Item Item{get{return _item;}}
     public int ItemCount{get{return _itemCount;}}
 
     public void ModifyItemCount() 
     {
-        if (_isItemCountChanger) GlobalInventoryController.AddItem(Item, ItemCount);
+        if (_isItemCountChanger) 
+        {
+            if (_itemCount > 0)
+            {
+                GlobalInventoryController.AddItem(Item.GetName(), ItemCount);
+            }
+            else 
+            {
+                GlobalInventoryController.RemoveItem(Item.GetName(), -ItemCount);
+                Debug.Log("Apple Removed");
+            }
+            
+        }
     }
 }

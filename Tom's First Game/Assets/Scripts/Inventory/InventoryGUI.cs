@@ -5,44 +5,32 @@ using UnityEngine.UI;
 
 public class InventoryGUI : MonoBehaviour
 {
-    [SerializeField]
-    private InventoryItem _slot = null;
+    [SerializeField] private InventoryItem _slot = null;
+    [SerializeField] private List<Item> _allItems = new List<Item>();
+
     private Transform _GUITransform;
-    private Vector3 _offset;
+    private Vector3 _offset = new Vector3(0, 5, 0);
     private List<InventoryItem> _slots = new List<InventoryItem>();
     private int _finalSlotIndex = 0; 
-
-    [SerializeField]
-    private List<Item> _allItems = new List<Item>();
-
+    private bool _isActive = false;
+    private PlayerController _playerScript;
+    private List<Item> currentItems = new List<Item>();
+    
     private void Start()
     {
         _GUITransform = GetComponent<Transform>();
-        _offset = new Vector3(0, 5, 0);
+        _playerScript = FindObjectOfType<PlayerController>();
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CreateNewSlot(_allItems[0]);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            DeleteSlot(_allItems[0]);
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log(_allItems);
-        }
-    }
-    public void CreateNewSlot(Item i)
+
+    public void AddSlot(Item addItem)
     {
         InventoryItem slotInstance;
         Debug.Log("SlotInstance");
         slotInstance = Instantiate(_slot, _GUITransform.position + SlotPosition(_finalSlotIndex), Quaternion.identity, _GUITransform) as InventoryItem;
         _finalSlotIndex++;
-        slotInstance.SetItem(i);
+        slotInstance.SetItem(addItem);
         _slots.Add(slotInstance);
+        currentItems.Add(addItem);
     }
 
     public void DeleteSlot(Item deleteItem)
@@ -58,10 +46,39 @@ public class InventoryGUI : MonoBehaviour
                 _finalSlotIndex--;
             }
         }
+        currentItems.Remove(deleteItem);
     }
 
     private Vector3 SlotPosition(int index)
     {
         return _offset + new Vector3(0, -1, 0) * index;
+    }
+
+    public void ToggleGui()
+    {
+        _isActive = !_isActive;
+        gameObject.SetActive(_isActive);
+        if (_isActive)
+        {
+            updateSlots();
+        }
+        _playerScript.CanMove = !_isActive;
+        Debug.Log(_isActive);
+    }
+
+    private void updateSlots()
+    {
+        Debug.Log("Update Slots");
+        foreach (Item item in _allItems)
+        {
+            DeleteSlot(item);
+        }
+        foreach (Item item in _allItems)
+        {
+            if (GlobalInventoryController.ItemCount(item.GetName()) > 0)
+            {
+                AddSlot(item);
+            }
+        }
     }
 }
