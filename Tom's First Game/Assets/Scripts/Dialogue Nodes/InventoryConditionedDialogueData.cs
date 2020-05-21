@@ -21,8 +21,6 @@ public class InventoryConditionedDialogueData : AbstractDialogueData, IDialogueD
 
     public void TriggerDialogue() 
     {
-        Debug.Log("ICDD Trigger Dialogue");
-        _itemNode.ModifyItemCount();
         Node.IsActive = false;
         Controller.StartDialogue(Node);
         Controller.ChoiceLoaded = false;
