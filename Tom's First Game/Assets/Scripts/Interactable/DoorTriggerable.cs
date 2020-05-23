@@ -18,7 +18,7 @@ public class DoorTriggerable : DialogueTree, IInteractable
     
     public void InteractedWith() 
     {
-        StartDialogue();   
+        StartTreeDialogue();   
     }
 
     private void Update()

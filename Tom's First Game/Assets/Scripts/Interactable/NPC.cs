@@ -6,6 +6,6 @@ public class NPC : DialogueTree, IInteractable
 {
     public void InteractedWith() 
     {
-        StartDialogue();   
+        StartTreeDialogue();   
     }
 }

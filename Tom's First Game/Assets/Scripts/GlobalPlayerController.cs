@@ -29,13 +29,23 @@ public static class GlobalPlayerController
     }
 
     // Setters
-    public static void SetPosition(string scene, Vector2 position){_positions[scene] = position;}
+    public static void SetPosition(string scene, Vector2 position)
+    {
+        _positions[scene] = position;
+    }
 
-    public static void SetDestroy(Vector2 location, bool destroyed){_destroyedObjects[location] = true;}
+    public static void SetDestroy(Vector2 location, bool destroyed)
+    {
+        _destroyedObjects[location] = true;
+    }
 
-    public static void AddDecision(string question, bool decision){_decisions[question] = decision;}
+    public static void AddDecision(string question, bool decision)
+    {
+        _decisions[question] = decision;
+    }
 
-    public static bool CheckPositionsKey(string key){
+    public static bool CheckPositionsKey(string key)
+    {
         return _positions.ContainsKey(key);
     }
 

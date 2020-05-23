@@ -15,17 +15,27 @@ public class DialogueTree : MonoBehaviour
         _controller = FindObjectOfType<DialogueController>();
     }
 
-    public void StartDialogue()
+    public void StartTreeDialogue()
     {
+        if (_currentNode.GetDialogue().Length > 0) Debug.Log(_currentNode.GetDialogue()[0]);
+        else Debug.Log("Empty Dialogue");
+
+        if (_currentNode.GetIsAutoAdvancer())
+        {
+            Interactor interactor = FindObjectOfType<Interactor>();
+            interactor.MustInteract();
+        }
+        string [] lines = _currentNode.GetDialogue();
+        _currentNode = _currentNode.GetNextNode();
         ChoiceData choiceData = _currentNode.GetComponent<ChoiceData>();
         if (choiceData != null)
         {
             string choiceText = choiceData.GetChoice();
-            _controller.StartDialogueWithChoice(_currentNode, choiceText);
-            return;
+            _controller.StartDialogueWithChoice(lines, choiceText);
         }
-        _controller.StartDialogue(_currentNode);
-        _currentNode = _currentNode.GetNextNode();
+        else
+        {
+            _controller.StartDialogue(lines);
+        }
     }   
- 
 }

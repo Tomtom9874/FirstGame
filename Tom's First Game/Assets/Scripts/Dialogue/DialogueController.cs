@@ -23,7 +23,6 @@ public class DialogueController : MonoBehaviour
     private bool _choiceLoaded = false;
     private bool _isChoosing = false;
     private bool _yesSelected = true;
-    private DialogueNode _currentNode;
 
     void Start()
     {
@@ -33,6 +32,7 @@ public class DialogueController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space)) Debug.Log(_dialogueText.text);
         if ((_isSpeaking || _isChoosing) && _delay == 0)
         {
             AddChar();
@@ -51,6 +51,7 @@ public class DialogueController : MonoBehaviour
         }
         if (_isChoosing && _remainingCharacters < 1) 
         {
+            Debug.Log(_choiceText);
             GlobalPlayerController.AddDecision(_choiceText, _yesSelected);
             EndDialogue();
         }
@@ -66,27 +67,28 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    public void StartDialogue(DialogueNode node)
+    public void StartDialogue(string [] dialogue)
     {
-        _currentNode = node;
+        if (_isActive) Debug.Log("Already Active");
         _isActive = true;
         _dialogueCanvas.SetActive(true);
         _choiceCanvas.SetActive(false);
-        _interactor.StartConversation();
+        
         _lines.Clear();
-        foreach(string sentence in _currentNode.Dialogue)
+        foreach(string sentence in dialogue)
         {
             _lines.Enqueue(sentence);
         }
+        _interactor.StartConversation();
         if (_lines.Count == 0) DialogueEmpty();
         DisplayNextSentence();
     }
 
-    public void StartDialogueWithChoice(DialogueNode node, string choiceText)
+    public void StartDialogueWithChoice(string [] dialogue, string choiceText)
     {
         _choiceText = choiceText;
         _choiceLoaded = true;
-        StartDialogue(node);
+        StartDialogue(dialogue);
     }
     
     private bool DisplayNextSentence()
@@ -140,16 +142,28 @@ public class DialogueController : MonoBehaviour
 
     private void EndDialogue()
     {
+        Debug.Log("EndDialogue");
         _dialogueCanvas.SetActive(false);
-        _interactor.EndConversation();
         _isActive = false;
         _choiceLoaded = false;
         _isChoosing = false;
+        _isSpeaking = false;
+        _delay = 0;
+        _remainingCharacters = 0;
+        _choiceText = null;
+        _yesSelected = true;
+        _interactor.EndConversation();
     }
 
     private void DialogueEmpty()
     {
-        if (!_choiceLoaded) EndDialogue();
-        else StartChoice();
+        if (_choiceLoaded) 
+        {
+            StartChoice();
+        }
+        else 
+        {
+            EndDialogue();
+        }
     }
 }
