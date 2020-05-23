@@ -62,8 +62,14 @@ public class InventoryGUI : MonoBehaviour
         {
             updateSlots();
         }
-        _playerScript.CanMove = !_isActive;
-        Debug.Log(_isActive);
+        if (_isActive)
+        {
+            _playerScript.Pause();
+        }
+        else
+        {
+            _playerScript.Unpause();
+        }
     }
 
     private void updateSlots()

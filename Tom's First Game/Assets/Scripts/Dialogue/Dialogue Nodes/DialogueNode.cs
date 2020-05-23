@@ -9,11 +9,9 @@ public class DialogueNode  : MonoBehaviour
     [SerializeField] private string [] _dialogue = null;
     [SerializeField] private DialogueNode _defaultNode = null;
 
-    public bool IsActive{get{return _isActive;} set{_isActive = value;}}
     public DialogueNode DefaultNode {get{return _defaultNode;}}
     public string [] Dialogue{get {return _dialogue;}}
 
-    private bool _isActive = false;
     private IDialogueData _dialogueData;
     private ItemNode _itemNode;
 
@@ -23,17 +21,13 @@ public class DialogueNode  : MonoBehaviour
         _itemNode = GetComponent<ItemNode>();
     }
 
-    public void TriggerDialogue()
+    public DialogueNode GetNextNode()
     {
-        _dialogueData.TriggerDialogue();
-    }
-
-    public void AdvanceNode()
-    {
-        _dialogueData.AdvanceNode();
+        DialogueNode nextNode = _dialogueData.GetNextNode();
         if (_itemNode != null) 
         {
             _itemNode.ModifyItemCount();
         }
+        return nextNode;
     }
 }

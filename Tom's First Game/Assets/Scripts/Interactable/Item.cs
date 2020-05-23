@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour, IInteractable
+public class Item : DialogueTree, IInteractable
 {
     [SerializeField] private string _name = "null item";
     [SerializeField] private string _description = "NULL DESCRIPTION";
@@ -22,7 +22,7 @@ public class Item : MonoBehaviour, IInteractable
 
     public void InteractedWith() 
     {
-        _dialogueData.TriggerDialogue();
+        StartDialogue();
         GlobalInventoryController.AddItem(_name, 1);
         _destroyer.SelfDestruct();
     }

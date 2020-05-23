@@ -4,6 +4,5 @@ using UnityEngine;
 
 interface IDialogueData
 {
-    void TriggerDialogue();
-    void AdvanceNode();
+    DialogueNode GetNextNode();
 }

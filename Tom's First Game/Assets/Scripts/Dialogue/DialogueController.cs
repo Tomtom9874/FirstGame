@@ -4,9 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-
-
-
 public class DialogueController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _dialogueText = null;
@@ -16,7 +13,6 @@ public class DialogueController : MonoBehaviour
     public GameObject _choiceCanvas;
     public int _characterDelay = 1;
     
-    private PlayerController _playerScript;
     private Interactor _interactor;
     private Queue<string> _lines = new Queue<string>();
     private int _delay = 0;
@@ -28,54 +24,54 @@ public class DialogueController : MonoBehaviour
     private bool _isChoosing = false;
     private bool _yesSelected = true;
     private DialogueNode _currentNode;
-    
-    public string ChoiceText{get {return _choiceText;} set {_choiceText=value;}}
-    public bool ChoiceLoaded{get {return _choiceLoaded;} set{_choiceLoaded=value;}}
-
 
     void Start()
     {
         _dialogueCanvas.SetActive(false);
-        _playerScript = FindObjectOfType<PlayerController>();
         _interactor = FindObjectOfType<Interactor>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if ((_isSpeaking || _isChoosing) && _delay == 0)
         {
-            if (_isActive && !_isChoosing) 
-            {
-                advanceDialogue();
-            }
-            if (_isChoosing && _remainingCharacters < 1) 
-            {
-                GlobalPlayerController.AddDecision(_choiceText, _yesSelected);
-                EndDialogue();
-            }
-        }
-        
-        if ((_isSpeaking || _isChoosing) && _delay == 0){
             AddChar();
         }
-        if (_delay > 0) _delay--;
+        if (_delay > 0) 
+        {
+            _delay--;
+        }
+    }
+    
+    public void ReceiveSelection()
+    {
+        if (_isActive && !_isChoosing) 
+        {
+            advanceDialogue();
+        }
+        if (_isChoosing && _remainingCharacters < 1) 
+        {
+            GlobalPlayerController.AddDecision(_choiceText, _yesSelected);
+            EndDialogue();
+        }
+    }
+
+    public void ChangeSelection()
+    {
         if (_isChoosing)
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S)) {
-                _yesSelected = !_yesSelected;
-            }
+            _yesSelected = !_yesSelected;
             _yesArrow.enabled = _yesSelected;
             _noArrow.enabled = !_yesSelected;
         }
     }
- 
+
     public void StartDialogue(DialogueNode node)
     {
         _currentNode = node;
         _isActive = true;
         _dialogueCanvas.SetActive(true);
         _choiceCanvas.SetActive(false);
-        _playerScript.CanMove = false;
         _interactor.StartConversation();
         _lines.Clear();
         foreach(string sentence in _currentNode.Dialogue)
@@ -84,6 +80,13 @@ public class DialogueController : MonoBehaviour
         }
         if (_lines.Count == 0) DialogueEmpty();
         DisplayNextSentence();
+    }
+
+    public void StartDialogueWithChoice(DialogueNode node, string choiceText)
+    {
+        _choiceText = choiceText;
+        _choiceLoaded = true;
+        StartDialogue(node);
     }
     
     private bool DisplayNextSentence()
@@ -100,8 +103,12 @@ public class DialogueController : MonoBehaviour
 
     private void advanceDialogue()
     {
-        if (!_isSpeaking){
-            if (!DisplayNextSentence()) DialogueEmpty();
+        if (!_isSpeaking)
+        {
+            if (!DisplayNextSentence()) 
+            {
+                DialogueEmpty();
+            }
         }
         else
         {
@@ -134,12 +141,10 @@ public class DialogueController : MonoBehaviour
     private void EndDialogue()
     {
         _dialogueCanvas.SetActive(false);
-        _playerScript.CanMove = true;
         _interactor.EndConversation();
         _isActive = false;
         _choiceLoaded = false;
         _isChoosing = false;
-        _currentNode.AdvanceNode();
     }
 
     private void DialogueEmpty()

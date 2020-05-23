@@ -7,32 +7,18 @@ public class DecisionConditionedDialogueData: AbstractDialogueData, IDialogueDat
     [SerializeField] private DialogueNode _yesNode = null;
     [SerializeField] private DialogueNode _noNode = null;
     [SerializeField] private string _decision = "null decision";
-    
-    public DialogueNode YesNode{get{return _yesNode;}} 
-    public DialogueNode NoNode{get{return _noNode;}} 
 
-    public void TriggerDialogue() 
-    {
-        Node.IsActive = false;
-        AdvanceNode();
-        Controller.ChoiceLoaded = false;
-        Controller.StartDialogue(Node);
-    }
-
-    public void AdvanceNode()
+    public DialogueNode GetNextNode()
     {
         int condition = GlobalPlayerController.CheckDecision(_decision);
         switch (condition)
         {
             case 0:
-                NoNode.IsActive = true;
-                break;
+                return _noNode;
             case 1:
-                YesNode.IsActive = true;
-                break;
+                return _yesNode;
             default:
-                Node.DefaultNode.IsActive = true;
-                break;
+                return Node.DefaultNode;
         }
     }
 }

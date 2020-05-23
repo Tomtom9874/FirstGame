@@ -18,16 +18,18 @@ public class DoorTriggerable : DialogueTree, IInteractable
     
     public void InteractedWith() 
     {
-        for (int i = 0; i < DialogueNodes.Length; i++)
-        {
-            if (DialogueNodes[i].IsActive) CurrentNode = i;
-        }
-        DialogueNodes[CurrentNode].TriggerDialogue();   
+        StartDialogue();   
     }
 
     private void Update()
     {
-        if (_openCondition.CheckTriggers()) _spriteRenderer.sprite = _openSprite;
-        else _spriteRenderer.sprite = _closedSprite;
+        if (_openCondition.CheckTriggers()) 
+        {
+            _spriteRenderer.sprite = _openSprite;
+        }
+        else 
+        {
+            _spriteRenderer.sprite = _closedSprite;
+        }
     }
 }

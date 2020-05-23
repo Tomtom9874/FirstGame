@@ -14,22 +14,16 @@ public class InventoryConditionedDialogueData : AbstractDialogueData, IDialogueD
         _itemNode = GetComponent<ItemNode>();
     }
 
-    private void Update()
+    public DialogueNode GetNextNode()
     {
-        if (Node.IsActive && ConditionMet()) AdvanceNode();
-    }
-
-    public void TriggerDialogue() 
-    {
-        Node.IsActive = false;
-        Controller.StartDialogue(Node);
-        Controller.ChoiceLoaded = false;
-    }
-
-    public void AdvanceNode()
-    {
-        if (ConditionMet()) ConditionalNode.IsActive=true;
-        else Node.DefaultNode.IsActive = true;
+        if (ConditionMet()) 
+        {
+            return ConditionalNode;
+        }
+        else 
+        {
+            return Node.DefaultNode;
+        }
     }
 
     private bool ConditionMet()

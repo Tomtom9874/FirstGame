@@ -17,13 +17,18 @@ public class Interactor : MonoBehaviour
     private int _currentTalkDelay;
     
     // Setter
+    public void StartConversation()
+    {
+        _canTalk = false;
+        _player.Pause();
+    }
+
     public void EndConversation()
     {
         _canTalk = true;
         _currentTalkDelay = _talkDelay;
+        _player.Unpause();
     }
-
-    public void StartConversation(){_canTalk = false;}
 
     private void Awake()
     {
