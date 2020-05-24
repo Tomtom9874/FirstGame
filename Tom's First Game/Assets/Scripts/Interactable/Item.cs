@@ -23,7 +23,7 @@ public class Item : DialogueTree, IInteractable
     public void InteractedWith() 
     {
         StartTreeDialogue();
-        GlobalInventoryController.AddItem(_name, 1);
+        GlobalInventoryController.AddItems(_name, 1);
         _destroyer.SelfDestruct();
     }
 

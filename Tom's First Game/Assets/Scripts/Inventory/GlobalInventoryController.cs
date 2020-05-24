@@ -6,23 +6,9 @@ public class GlobalInventoryController : MonoBehaviour
 {
     private static Dictionary<string, int> _inventory = new Dictionary<string, int>();
 
-    public static void AddItem(string item, int amount)
+    public static void AddItems(string item, int amount)
     {
-        if (amount < 0)
-        {
-            Debug.LogError("Adding negative items.");
-        }
         IncrementDictionary(_inventory, item, amount);
-        
-    }
-
-    public static void RemoveItem(string item, int amount)
-    {
-        if (amount < 0)
-        {
-            Debug.LogError("Removing negative items.");
-        }
-        IncrementDictionary(_inventory, item, -amount);
         if (_inventory[item] < 1) 
         {
             _inventory.Remove(item);

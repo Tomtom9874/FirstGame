@@ -15,15 +15,7 @@ public class ItemNode : MonoBehaviour
     {
         if (_isItemCountChanger) 
         {
-            if (_itemCount > 0)
-            {
-                GlobalInventoryController.AddItem(Item.GetName(), ItemCount);
-            }
-            else 
-            {
-                GlobalInventoryController.RemoveItem(Item.GetName(), -ItemCount);
-            }
-            
+                GlobalInventoryController.AddItems(Item.GetName(), ItemCount);
         }
     }
 }
