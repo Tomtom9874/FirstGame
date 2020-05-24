@@ -27,6 +27,7 @@ public class DialogueController : MonoBehaviour
     void Start()
     {
         _dialogueCanvas.SetActive(false);
+        _noArrow.enabled = false;
         _interactor = FindObjectOfType<Interactor>();
     }
 
