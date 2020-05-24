@@ -1,18 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
+
 
 public class DialogueController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _dialogueText = null;
-    public Image _yesArrow;
-    public Image _noArrow;
-    public GameObject _dialogueCanvas;
-    public GameObject _choiceCanvas;
-    public int _characterDelay = 1;
     
+    [SerializeField] private int _characterDelay = 1;
+    
+    private DialogueGui _gui;
     private Interactor _interactor;
     private Queue<string> _lines = new Queue<string>();
     private int _delay = 0;
@@ -26,9 +22,8 @@ public class DialogueController : MonoBehaviour
 
     void Start()
     {
-        _dialogueCanvas.SetActive(false);
-        _noArrow.enabled = false;
         _interactor = FindObjectOfType<Interactor>();
+        _gui = GetComponent<DialogueGui>();
     }
 
     void Update()
@@ -60,24 +55,24 @@ public class DialogueController : MonoBehaviour
         if (_isChoosing)
         {
             _yesSelected = !_yesSelected;
-            _yesArrow.enabled = _yesSelected;
-            _noArrow.enabled = !_yesSelected;
+            _gui.SwitchArrow(_yesSelected);
         }
     }
 
     public void StartDialogue(string [] dialogue)
     {
+        _gui.StartDialogue();
         _isActive = true;
-        _dialogueCanvas.SetActive(true);
-        _choiceCanvas.SetActive(false);
-        
         _lines.Clear();
         foreach(string sentence in dialogue)
         {
             _lines.Enqueue(sentence);
         }
         _interactor.StartConversation();
-        if (_lines.Count == 0) DialogueEmpty();
+        if (_lines.Count == 0) 
+        {
+            DialogueEmpty();
+        }
         DisplayNextSentence();
     }
 
@@ -90,10 +85,12 @@ public class DialogueController : MonoBehaviour
     
     private bool DisplayNextSentence()
     {
-        if (_lines.Count == 0) return false;
+        if (_lines.Count == 0) 
+        {
+            return false;
+        }
         string sentence = _lines.Dequeue();
-        _dialogueText.text = sentence;
-        _dialogueText.maxVisibleCharacters = 0;
+        _gui.StartNewSentence(sentence);
         _remainingCharacters = sentence.Length;
         _isSpeaking = true;
         _delay = _characterDelay;
@@ -111,7 +108,7 @@ public class DialogueController : MonoBehaviour
         }
         else
         {
-            _dialogueText.maxVisibleCharacters += _remainingCharacters;
+            _gui.IncreaseVisibleCharacters(_remainingCharacters);
             _remainingCharacters = 0;
             _isSpeaking = false;
         }
@@ -120,10 +117,8 @@ public class DialogueController : MonoBehaviour
     private void StartChoice()
     {
         _isChoosing = true;
-        _choiceCanvas.SetActive(true);
         string sentence = _choiceText;
-        _dialogueText.text = sentence;
-        _dialogueText.maxVisibleCharacters = 0;
+        _gui.StartChoice(sentence);
         _remainingCharacters = sentence.Length;
         _isSpeaking = false;
         _delay = _characterDelay;
@@ -131,23 +126,26 @@ public class DialogueController : MonoBehaviour
 
     private void AddChar()
     {
-        _dialogueText.maxVisibleCharacters++;
+        _gui.IncreaseVisibleCharacters(1);
         _remainingCharacters--;
-        if (_remainingCharacters == 0) _isSpeaking = false;
-        else _delay = _characterDelay;
+        if (_remainingCharacters == 0) 
+        {
+            _isSpeaking = false;
+        }
+        else 
+        {
+            _delay = _characterDelay;
+        }
     }
 
     private void EndDialogue()
     {
-        _dialogueCanvas.SetActive(false);
         _isActive = false;
         _choiceLoaded = false;
         _isChoosing = false;
         _isSpeaking = false;
-        _delay = 0;
-        _remainingCharacters = 0;
-        _choiceText = null;
         _yesSelected = true;
+        _gui.EndDialogue();
         _interactor.EndConversation();
     }
 

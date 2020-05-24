@@ -8,7 +8,7 @@ public class DialogueTree : MonoBehaviour
     private DialogueNode _currentNode;
     private DialogueController _controller;
 
-    private void Start()
+    private void Awake()
     {
         _dialogueNodes = GetComponentsInChildren<DialogueNode>();
         _currentNode = _dialogueNodes[0];

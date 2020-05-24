@@ -12,7 +12,7 @@ public class Item : DialogueTree, IInteractable
     private DialogueData _dialogueData;
     private SpriteRenderer _image;
 
-    private void Awake()
+    private void Start()
     {
         _position = GetComponent<Transform>().position;
         _destroyer = GetComponent<OnDestroy>();
