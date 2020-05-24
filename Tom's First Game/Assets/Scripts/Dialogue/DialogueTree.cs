@@ -17,9 +17,6 @@ public class DialogueTree : MonoBehaviour
 
     public void StartTreeDialogue()
     {
-        if (_currentNode.GetDialogue().Length > 0) Debug.Log(_currentNode.GetDialogue()[0]);
-        else Debug.Log("Empty Dialogue");
-
         if (_currentNode.GetIsAutoAdvancer())
         {
             Interactor interactor = FindObjectOfType<Interactor>();

@@ -22,7 +22,6 @@ public class ItemNode : MonoBehaviour
             else 
             {
                 GlobalInventoryController.RemoveItem(Item.GetName(), -ItemCount);
-                Debug.Log("Apple Removed");
             }
             
         }

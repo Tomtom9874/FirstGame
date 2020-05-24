@@ -25,7 +25,7 @@ public class InventoryGUI : MonoBehaviour
     public void AddSlot(Item addItem)
     {
         InventoryItem slotInstance;
-        Debug.Log("SlotInstance");
+
         slotInstance = Instantiate(_slot, _GUITransform.position + SlotPosition(_finalSlotIndex), Quaternion.identity, _GUITransform) as InventoryItem;
         _finalSlotIndex++;
         slotInstance.SetItem(addItem);
@@ -35,7 +35,6 @@ public class InventoryGUI : MonoBehaviour
 
     public void DeleteSlot(Item deleteItem)
     {
-        Debug.Log("DeleteSlot");
         string itemName = deleteItem.GetName();
         for (int i = _slots.Count - 1; i >= 0; i--)
         {
@@ -74,7 +73,6 @@ public class InventoryGUI : MonoBehaviour
 
     private void updateSlots()
     {
-        Debug.Log("Update Slots");
         foreach (Item item in _allItems)
         {
             DeleteSlot(item);

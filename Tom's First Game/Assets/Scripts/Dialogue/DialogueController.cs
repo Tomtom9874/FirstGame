@@ -33,8 +33,6 @@ public class DialogueController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) Debug.Log(_dialogueText.text);
-        if ((_isSpeaking || _isChoosing) && _delay == 0)
         {
             AddChar();
         }
@@ -52,7 +50,6 @@ public class DialogueController : MonoBehaviour
         }
         if (_isChoosing && _remainingCharacters < 1) 
         {
-            Debug.Log(_choiceText);
             GlobalPlayerController.AddDecision(_choiceText, _yesSelected);
             EndDialogue();
         }
@@ -70,7 +67,6 @@ public class DialogueController : MonoBehaviour
 
     public void StartDialogue(string [] dialogue)
     {
-        if (_isActive) Debug.Log("Already Active");
         _isActive = true;
         _dialogueCanvas.SetActive(true);
         _choiceCanvas.SetActive(false);
@@ -143,7 +139,6 @@ public class DialogueController : MonoBehaviour
 
     private void EndDialogue()
     {
-        Debug.Log("EndDialogue");
         _dialogueCanvas.SetActive(false);
         _isActive = false;
         _choiceLoaded = false;

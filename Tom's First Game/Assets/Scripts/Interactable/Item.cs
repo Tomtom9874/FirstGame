@@ -40,9 +40,6 @@ public class Item : DialogueTree, IInteractable
     public Sprite GetSprite()
     {
         _image = GetComponent<SpriteRenderer>();
-        if (_image == null){
-            Debug.Log("The image is null");
-        }
         return _image.sprite;
     }
 }
