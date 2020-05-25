@@ -6,7 +6,8 @@ public class DoorSwitch : Trigger
 {
     public override void InteractedWith()
     {
-        Debug.Log("Switched");
         IsActive = true;
+        ITriggerable objectAttachedTo = transform.parent.gameObject.GetComponent<ITriggerable>();
+        objectAttachedTo.CheckTriggers();
     }
 }

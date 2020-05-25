@@ -13,7 +13,10 @@ public class PlayerAnimator : MonoBehaviour
         _playerMovement = GetComponent<PlayerController>();
         _animator = GetComponent<Animator>();
     }
-    private void Update() {SetAnimatorValues();}
+    private void Update() 
+    {
+        SetAnimatorValues();
+    }
     
     public void SetAnimatorValues()
     {

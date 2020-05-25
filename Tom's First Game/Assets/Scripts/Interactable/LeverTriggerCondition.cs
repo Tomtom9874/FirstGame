@@ -5,10 +5,7 @@ using UnityEngine;
 public class LeverTriggerCondition : MonoBehaviour, ITriggerCondition
 {
     [SerializeField] int _triggersNeeded = 0;
-    
     Trigger [] _triggers;
-
-
 
     private void Awake()
     {
