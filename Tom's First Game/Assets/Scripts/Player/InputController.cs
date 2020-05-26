@@ -17,12 +17,22 @@ public class InputController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) _interactor.Interact();
+        if (Input.GetKeyDown(KeyCode.E)) 
+        {
+            _interactor.Interact();
+        }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)) _movement.ToggleSprintOn(); 
-        if (Input.GetKeyUp(KeyCode.LeftShift)) _movement.ToggleSprintOff();
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftShift)) 
+        {
+            _movement.ToggleSprint(); 
+        }
+
         AxisInput();
-        if (Input.GetKeyDown(KeyCode.Space)) GlobalPlayerController.PrintDecisions();
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            GlobalPlayerController.PrintDecisions();
+        }
+
         if (Input.GetKeyDown(KeyCode.I)) 
         {
             _inventoryGui.ToggleGui();

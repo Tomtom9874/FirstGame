@@ -14,8 +14,9 @@ public class PlayerController : MonoBehaviour
     private bool _isMoving;
     private bool _hasAdjusted = false;
     private string _currentSceneName;
-    private float _sprintFactor = 1.5f;
+    private float _sprintFactor = 0.5f;
     private Vector2 _moveDirection;
+    private bool _isSprinting = false;
 
     // Components
     Rigidbody2D _rigidbody2d;
@@ -41,15 +42,30 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         checkMoving();
-        if (_canMove) MovePlayer();
-        if (_isMoving) _lookDirection = _moveDirection;
-        if (!_hasAdjusted) AdjustOnNewScene();
+        if (_canMove) 
+        {
+            MovePlayer();
+        }
+        if (_isMoving) 
+        {
+            _lookDirection = _moveDirection;
+        }
+        if (!_hasAdjusted) 
+        {
+            AdjustOnNewScene();
+        }
     } 
 
     private void checkMoving()
     {
-        if (_canMove && ((_moveDirection.x != 0 || _moveDirection.y != 0))) _isMoving = true;
-        else _isMoving = false;
+        if (_canMove && ((_moveDirection.x != 0 || _moveDirection.y != 0))) 
+        {
+            _isMoving = true;
+        }
+        else 
+        {
+            _isMoving = false;
+        }
     }
 
     private void MovePlayer()
@@ -57,7 +73,12 @@ public class PlayerController : MonoBehaviour
         if (_hasAdjusted)
         {
             Vector2 position = _rigidbody2d.position;
-            position += _moveDirection * _speed;
+            int sprint = 0;
+            if (_isSprinting)
+            {
+                sprint = 1;
+            }
+            position += _moveDirection * _speed * (1 + sprint * _sprintFactor);
             _rigidbody2d.MovePosition(position);
             GlobalPlayerController.SetPosition(_currentSceneName, _rigidbody2d.position);
         }
@@ -71,17 +92,12 @@ public class PlayerController : MonoBehaviour
             _rigidbody2d.MovePosition(previousPosition + _lookDirection);
         }
         _hasAdjusted = true;
-        GlobalPlayerController.SetPosition(_currentSceneName, _rigidbody2d.position);
     }
 
     // Public Methods
-    public void ToggleSprintOn()
+    public void ToggleSprint()
     {
-        _speed *= _sprintFactor;
-    }
-    public void ToggleSprintOff()
-    {
-        _speed /= _sprintFactor;
+        _isSprinting = !_isSprinting;
     }
 
     public void Pause()
