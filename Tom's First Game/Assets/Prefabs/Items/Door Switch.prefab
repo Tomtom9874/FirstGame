@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5990627116869717558}
   - component: {fileID: 5990627116869717557}
-  - component: {fileID: 5990627116869717556}
   - component: {fileID: 5990627116869717559}
+  - component: {fileID: 2196075309901692000}
   m_Layer: 11
   m_Name: Door Switch
   m_TagString: Untagged
@@ -84,22 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5990627116869717556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5990627116869717555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2691333e335587d4992debcc077d7270, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _activeSprite: {fileID: 2963381043445473828, guid: 70dc80c191970ee48a397b421c70df1e,
-    type: 3}
-  _inactiveSprite: {fileID: 1234207849076919936, guid: 70dc80c191970ee48a397b421c70df1e,
-    type: 3}
 --- !u!61 &5990627116869717559
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,3 +110,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.85905457, y: 0.41622353}
   m_EdgeRadius: 0
+--- !u!114 &2196075309901692000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5990627116869717555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497a47e6e25192543818fec6baf35ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeSprite: {fileID: 2963381043445473828, guid: 70dc80c191970ee48a397b421c70df1e,
+    type: 3}
+  _inactiveSprite: {fileID: 1234207849076919936, guid: 70dc80c191970ee48a397b421c70df1e,
+    type: 3}

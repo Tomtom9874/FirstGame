@@ -22,9 +22,10 @@ public class Trigger : MonoBehaviour, IInteractable
         else _spriteRenderer.sprite = _inactiveSprite;
     }
 
-    public virtual void InteractedWith()
+    public void InteractedWith()
     {
-        Debug.Log("Switched");
-        IsActive = !IsActive;
+        IsActive = true;
+        ITriggerable objectAttachedTo = transform.parent.gameObject.GetComponent<ITriggerable>();
+        objectAttachedTo.CheckTriggers();
     }
 }

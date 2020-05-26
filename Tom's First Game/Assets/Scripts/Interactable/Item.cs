@@ -7,10 +7,12 @@ public class Item : DialogueTree, IInteractable
 {
     [SerializeField] private string _name = "null item";
     [SerializeField] private string _description = "NULL DESCRIPTION";
+    [SerializeField] private int _amountPerPickup = 1;
     private Vector2 _position;
     private OnDestroy _destroyer;
     private DialogueData _dialogueData;
     private SpriteRenderer _image;
+
 
     private void Start()
     {
@@ -23,7 +25,7 @@ public class Item : DialogueTree, IInteractable
     public void InteractedWith() 
     {
         StartTreeDialogue();
-        GlobalInventoryController.AddItems(_name, 1);
+        GlobalInventoryController.AddItems(_name, _amountPerPickup);
         _destroyer.SelfDestruct();
     }
 

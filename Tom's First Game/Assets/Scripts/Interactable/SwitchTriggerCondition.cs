@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeverTriggerCondition : MonoBehaviour, ITriggerCondition
+public class SwitchTriggerCondition : MonoBehaviour, ITriggerCondition
 {
     [SerializeField] int _triggersNeeded = 0;
     Trigger [] _triggers;
@@ -17,7 +17,10 @@ public class LeverTriggerCondition : MonoBehaviour, ITriggerCondition
         int count = 0;
         foreach (Trigger trigger in _triggers)
         {
-            if (trigger.IsActive) count++;
+            if (trigger.IsActive) 
+            {
+                count++;
+            }
         }
         return (count >= _triggersNeeded);
     }
