@@ -7,25 +7,27 @@ public static class GlobalPlayerController
     // Stores any data that needs to persist between scenes!
     private static Dictionary<string, Vector2> _positions = new Dictionary<string, Vector2>();
 
-    private static Dictionary<string, bool> _decisions = new Dictionary<string, bool>();
+    private static Dictionary<string, string> _decisions = new Dictionary<string, string>();
     private static Dictionary<Vector2, bool> _destroyedObjects = new Dictionary<Vector2, bool>();
 
     public static void ReDestroyObjects()
     {
         OnDestroy[] components = GameObject.FindObjectsOfType<OnDestroy>();
-        foreach(OnDestroy comp in components){
+        foreach(OnDestroy comp in components)
+        {
             if (_destroyedObjects.ContainsKey(comp.Position)) comp.SelfDestruct();
         }
     }
 
-    // Getters
-    public static Vector2 GetPosition(string scene) {return _positions[scene];}
-
-    public static int CheckDecision(string decision) 
+    public static void ResetDecisions()
     {
-        if (!_decisions.ContainsKey(decision)) return -1;
-        if (_decisions[decision]) return 1;
-        else return 0;
+        // TODO
+    }
+
+    // Getters
+    public static Vector2 GetPosition(string scene) 
+    {
+        return _positions[scene];
     }
 
     // Setters
@@ -39,9 +41,10 @@ public static class GlobalPlayerController
         _destroyedObjects[location] = true;
     }
 
-    public static void AddDecision(string question, bool decision)
+    public static void AddDecision(Choice choice)
     {
-        _decisions[question] = decision;
+        string decision = choice.GetCurrentChoice();
+        _decisions[choice.GetChoiceDialogue()] = decision;
     }
 
     public static bool CheckPositionsKey(string key)
@@ -51,10 +54,13 @@ public static class GlobalPlayerController
 
     public static void PrintDecisions()
     {
-        if (_decisions.Count == 0) Debug.Log("No Decisions!");
-        foreach ( KeyValuePair<string, bool> decisions in _decisions)
+        if (_decisions.Count == 0) 
         {
-            Debug.Log(decisions);
+            Debug.Log("No Decisions!");
+        }
+        foreach ( KeyValuePair<string, string> decision in _decisions)
+        {
+            Debug.Log(decision);
         }
     }
 

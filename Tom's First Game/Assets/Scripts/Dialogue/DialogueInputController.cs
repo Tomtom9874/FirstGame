@@ -13,9 +13,14 @@ public class DialogueInputController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            _dialogueController.ChangeSelection();
+            _dialogueController.ChangeSelection("Up");
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        {
+            _dialogueController.ChangeSelection("Down");
         }
 
         if (Input.GetKeyDown(KeyCode.E))

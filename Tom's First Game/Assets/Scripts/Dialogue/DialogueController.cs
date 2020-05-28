@@ -16,9 +16,10 @@ public class DialogueController : MonoBehaviour
     private int _remainingCharacters;
     private bool _isActive = false;
     private string _choiceText;
-    private bool _choiceLoaded = false;
     private bool _isChoosing = false;
-    private bool _yesSelected = true;
+    private int _currentSelection;
+    private Choice _choice;
+    private string [] _allChoices = null;
 
     void Start()
     {
@@ -45,17 +46,33 @@ public class DialogueController : MonoBehaviour
         }
         if (_isChoosing && _remainingCharacters < 1) 
         {
-            GlobalPlayerController.AddDecision(_choiceText, _yesSelected);
+            _choice.MakeChoice(_currentSelection);
+            GlobalPlayerController.AddDecision(_choice);
             EndDialogue();
         }
     }
 
-    public void ChangeSelection()
+    public void ChangeSelection(string direction)
     {
         if (_isChoosing)
         {
-            _yesSelected = !_yesSelected;
-            _gui.SwitchArrow(_yesSelected);
+            if (direction == "Down")
+            {
+                _currentSelection++;
+                if (_currentSelection > _allChoices.Length)
+                {
+                    _currentSelection = 0;
+                }
+            }
+            if (direction == "Up")
+            {
+                _currentSelection--;
+                if(_currentSelection < 0)
+                {
+                    _currentSelection = _allChoices.Length;
+                }
+            }
+            _gui.SwitchArrow(_currentSelection);
         }
     }
 
@@ -76,10 +93,11 @@ public class DialogueController : MonoBehaviour
         DisplayNextSentence();
     }
 
-    public void StartDialogueWithChoice(string [] dialogue, string choiceText)
+    public void StartDialogueWithChoice(string [] dialogue, Choice choice)
     {
-        _choiceText = choiceText;
-        _choiceLoaded = true;
+        _allChoices = choice.GetAllChoices();
+        _choiceText = choice.GetChoiceDialogue();
+        _choice = choice;
         StartDialogue(dialogue);
     }
     
@@ -116,9 +134,10 @@ public class DialogueController : MonoBehaviour
 
     private void StartChoice()
     {
+        _currentSelection = 0;
         _isChoosing = true;
         string sentence = _choiceText;
-        _gui.StartChoice(sentence);
+        _gui.StartChoice(_choice);
         _remainingCharacters = sentence.Length;
         _isSpeaking = false;
         _delay = _characterDelay;
@@ -141,17 +160,16 @@ public class DialogueController : MonoBehaviour
     private void EndDialogue()
     {
         _isActive = false;
-        _choiceLoaded = false;
+        _choice = null;
         _isChoosing = false;
         _isSpeaking = false;
-        _yesSelected = true;
         _gui.EndDialogue();
         _interactor.EndConversation();
     }
 
     private void DialogueEmpty()
     {
-        if (_choiceLoaded) 
+        if (_choice != null) 
         {
             StartChoice();
         }

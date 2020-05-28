@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ChoiceData : AbstractDialogueData, IDialogueData
 {
-    [SerializeField] private string _choiceText = "Null";
+    [SerializeField] private Choice _choice = null;
 
     public DialogueNode GetNextNode()
     {
         return Node.DefaultNode;
     }
 
-    public string GetChoice()
+    public Choice GetChoice()
     {
-        return _choiceText;
+        return _choice;
     }
 }
 

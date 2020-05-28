@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class DecisionConditionedDialogueData: AbstractDialogueData, IDialogueData
 {
-    [SerializeField] private DialogueNode _yesNode = null;
-    [SerializeField] private DialogueNode _noNode = null;
-    [SerializeField] private string _decision = "null decision";
+    [SerializeField] private DialogueNode [] _decisionNodes = null;
+    [SerializeField] private Choice _decision = null;
 
     public DialogueNode GetNextNode()
     {
-        int condition = GlobalPlayerController.CheckDecision(_decision);
-        switch (condition)
-        {
-            case 0:
-                return _noNode;
-            case 1:
-                return _yesNode;
-            default:
+        int condition = _decision.GetCurrentChoiceIndex();
+        // Change this from a switch to a list that returns the index given.
+            if (condition == -1) 
+            {
                 return Node.DefaultNode;
-        }
+            }
+            else 
+            {
+                return _decisionNodes[condition];
+            }
     }
 }

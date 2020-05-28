@@ -27,8 +27,8 @@ public class DialogueTree : MonoBehaviour
         ChoiceData choiceData = _currentNode.GetComponent<ChoiceData>();
         if (choiceData != null)
         {
-            string choiceText = choiceData.GetChoice();
-            _controller.StartDialogueWithChoice(lines, choiceText);
+            Choice choice = choiceData.GetChoice();
+            _controller.StartDialogueWithChoice(lines, choice);
         }
         else
         {

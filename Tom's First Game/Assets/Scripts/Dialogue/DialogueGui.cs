@@ -7,22 +7,15 @@ using UnityEngine.UI;
 public class DialogueGui : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _dialogueText = null;
-    [SerializeField] private Image _yesArrow = null;
-    [SerializeField] private Image _noArrow = null;
+    [SerializeField] private GameObject _selectionArrow = null;
 
-    private GameObject _choiceCanvas;
+    [SerializeField] private GameObject _choices = null;
     private bool _initialOff = true;
 
     private void Start()
     {
-        _noArrow.enabled = false;
-        Canvas [] canvasChildren = GetComponentsInChildren<Canvas>();
-        foreach (Canvas canvas in canvasChildren)
-        {
-            _choiceCanvas = canvas.gameObject;
-        }
-    }
 
+    }
     private void Update()
     {
         if (_initialOff)
@@ -46,13 +39,13 @@ public class DialogueGui : MonoBehaviour
     public void StartDialogue()
     {
         gameObject.SetActive(true);
-        _choiceCanvas.SetActive(false);
+        _choices.SetActive(false);
     }
 
-    public void StartChoice(string line)
+    public void StartChoice(Choice choice)
     {
-        _choiceCanvas.SetActive(true);
-        StartNewSentence(line);
+        _choices.SetActive(true);
+        StartNewSentence(choice.GetChoiceDialogue());
     }
 
     public void EndDialogue()
@@ -60,9 +53,8 @@ public class DialogueGui : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SwitchArrow(bool selection)
+    public void SwitchArrow(int selection)
     {
-        _yesArrow.enabled = selection;
-        _noArrow.enabled = !selection;
+        Vector2 pos = _selectionArrow.GetComponent<RectTransform>().position;
     }
 }
