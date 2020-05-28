@@ -12,6 +12,16 @@ public class DialogueGui : MonoBehaviour
     [SerializeField] private GameObject _choices = null;
 
     private bool _initialOff = true;
+    private float offset = 23;
+
+    private RectTransform _selectionTransform;
+    private Vector3 _initialSelectionPosition;
+
+    private void Start()
+    {
+        _selectionTransform = _selectionArrow.GetComponent<RectTransform>();
+        _initialSelectionPosition = _selectionTransform.localPosition;
+    }
 
     private void Update()
     {
@@ -56,7 +66,9 @@ public class DialogueGui : MonoBehaviour
 
     public void SwitchArrow(int selection)
     {
-        Vector2 pos = _selectionArrow.GetComponent<RectTransform>().position;
-        Debug.Log(pos);
+        Debug.Log(selection);
+        Debug.Log(_initialSelectionPosition);
+        _selectionTransform.localPosition = _initialSelectionPosition + (offset * selection * Vector3.down);
+        Debug.Log(_selectionTransform.localPosition);
     }
 }
