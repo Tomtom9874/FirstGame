@@ -10,6 +10,7 @@ public class DialogueGui : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _choiceText = null;
     [SerializeField] private GameObject _selectionArrow = null;
     [SerializeField] private GameObject _choices = null;
+    [SerializeField] private GameObject _selectionTexts = null;
 
     private bool _initialOff = true;
     private float offset = 23;
@@ -56,6 +57,24 @@ public class DialogueGui : MonoBehaviour
         _choices.SetActive(true);
         _dialogueText.enabled = false;
         _choiceText.text = choice.GetChoiceDialogue();
+        string [] allchoices = choice.GetAllChoices();
+        int numChoices = allchoices.Length;
+        Debug.Log(numChoices);
+        TextMeshProUGUI [] selections = _selectionTexts.GetComponentsInChildren<TextMeshProUGUI>();
+        Debug.Log(selections.Length);
+        for (int i = 0; i < selections.Length; i++)
+        {
+            TextMeshProUGUI selection = selections[i];
+            if (i >= numChoices)
+            {
+                selection.enabled = false;
+            }
+            else 
+            {
+                selection.enabled = true;
+                selection.text = allchoices[i];
+            }
+        }
         StartNewSentence(choice.GetChoiceDialogue());
     }
 
@@ -66,9 +85,6 @@ public class DialogueGui : MonoBehaviour
 
     public void SwitchArrow(int selection)
     {
-        Debug.Log(selection);
-        Debug.Log(_initialSelectionPosition);
         _selectionTransform.localPosition = _initialSelectionPosition + (offset * selection * Vector3.down);
-        Debug.Log(_selectionTransform.localPosition);
     }
 }

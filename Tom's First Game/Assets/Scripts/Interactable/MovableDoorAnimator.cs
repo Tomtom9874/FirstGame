@@ -14,7 +14,6 @@ public class MovableDoorAnimator : MonoBehaviour
 
     public void PlayOpenAnimation()
     {
-        Debug.Log("Animated");
         _animator.SetBool("Open", true);
     }
 

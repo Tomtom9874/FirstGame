@@ -30,7 +30,6 @@ public class DoorTriggerable : DialogueTree, IInteractable, ITriggerable
             _spriteRenderer.sprite = _openSprite;
             if (_animator != null)
             {
-                Debug.Log("Animated");
                 _animator.PlayOpenAnimation();
             }
             

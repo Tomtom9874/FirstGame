@@ -59,7 +59,7 @@ public class DialogueController : MonoBehaviour
             if (direction == "Down")
             {
                 _currentSelection++;
-                if (_currentSelection > _allChoices.Length)
+                if (_currentSelection >= _allChoices.Length)
                 {
                     _currentSelection = 0;
                 }
@@ -67,9 +67,9 @@ public class DialogueController : MonoBehaviour
             if (direction == "Up")
             {
                 _currentSelection--;
-                if(_currentSelection < 0)
+                if (_currentSelection < 0)
                 {
-                    _currentSelection = _allChoices.Length;
+                    _currentSelection = _allChoices.Length - 1;
                 }
             }
             _gui.SwitchArrow(_currentSelection);
