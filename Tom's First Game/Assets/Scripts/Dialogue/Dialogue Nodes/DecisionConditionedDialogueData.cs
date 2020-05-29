@@ -7,6 +7,16 @@ public class DecisionConditionedDialogueData: AbstractDialogueData, IDialogueDat
     [SerializeField] private DialogueNode [] _decisionNodes = null;
     [SerializeField] private Choice _decision = null;
 
+    private void Start()
+    {
+        if (_decision.GetAllChoices().Length != _decisionNodes.Length)
+        {
+            Debug.Log(_decision.GetAllChoices().Length);
+            Debug.Log(_decisionNodes.Length);
+            Debug.LogError("No node selcted for some choice.");
+        }
+    }
+
     public DialogueNode GetNextNode()
     {
         int condition = _decision.GetCurrentChoiceIndex();
