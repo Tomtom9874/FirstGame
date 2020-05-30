@@ -18,4 +18,5 @@ public class ItemNode : MonoBehaviour
                 GlobalInventoryController.AddItems(Item.GetName(), ItemCount);
         }
     }
+    
 }

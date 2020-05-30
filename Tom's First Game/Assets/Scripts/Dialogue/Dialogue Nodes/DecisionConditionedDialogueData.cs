@@ -6,7 +6,7 @@ public class DecisionConditionedDialogueData: AbstractDialogueData, IDialogueDat
 {
     [SerializeField] private DialogueNode [] _decisionNodes = null;
     [SerializeField] private Choice _decision = null;
-
+    
     private void Start()
     {
         if (_decision.GetAllChoices().Length != _decisionNodes.Length)
