@@ -142,9 +142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogueText: {fileID: 583560511386881197}
-  _choiceText: {fileID: 0}
-  _selectionArrow: {fileID: 0}
-  _choices: {fileID: 0}
+  _choiceText: {fileID: 2423506585255084986}
+  _selectionArrow: {fileID: 7845754532502733936}
+  _choices: {fileID: 3849966227470238303}
+  _selectionTexts: {fileID: 7198333375197186539}
 --- !u!1 &583560511386881195
 GameObject:
   m_ObjectHideFlags: 0
