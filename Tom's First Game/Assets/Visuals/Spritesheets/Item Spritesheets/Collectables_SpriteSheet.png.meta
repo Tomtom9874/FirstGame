@@ -8,6 +8,27 @@ TextureImporter:
   - first:
       213: 7344189178573507456
     second: Collectables_SpriteSheet_1
+  - first:
+      213: 609170249291186853
+    second: Collectables_SpriteSheet_0
+  - first:
+      213: 6509065839109663757
+    second: Collectables_SpriteSheet_1
+  - first:
+      213: -1273861732364839953
+    second: Collectables_SpriteSheet_2
+  - first:
+      213: -6205515542238700834
+    second: Collectables_SpriteSheet_3
+  - first:
+      213: 8472620608042635645
+    second: Collectables_SpriteSheet_2
+  - first:
+      213: 2996251153548573796
+    second: Collectables_SpriteSheet_3
+  - first:
+      213: 737745011055713400
+    second: Collectables_SpriteSheet_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -96,19 +117,19 @@ TextureImporter:
       name: Collectables_SpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 31
+        x: 0
+        y: 32
         width: 8
         height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fecf8a475c5b2a000800000000000000
-      internalID: 45798805897542895
+      spriteID: 5a2ccbc3d15347800800000000000000
+      internalID: 609170249291186853
       vertices: []
       indices: 
       edges: []
@@ -117,19 +138,82 @@ TextureImporter:
       name: Collectables_SpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 11
-        y: 31
+        x: 8
+        y: 32
         width: 8
         height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08b4420952dcbe560800000000000000
-      internalID: 7344189178573507456
+      spriteID: d0ce2c7e4e8d45a50800000000000000
+      internalID: 6509065839109663757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collectables_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71190b9d8bc49570800000000000000
+      internalID: 8472620608042635645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collectables_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46cfd11ac82d49920800000000000000
+      internalID: 2996251153548573796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collectables_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87cdac6cd2ffc3a00800000000000000
+      internalID: 737745011055713400
       vertices: []
       indices: 
       edges: []
