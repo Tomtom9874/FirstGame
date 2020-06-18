@@ -20,6 +20,12 @@ TextureImporter:
   - first:
       213: 7205030365594666719
     second: Cliff_Tilesheet_5
+  - first:
+      213: -5577979310377959468
+    second: Cliff_Tilesheet_6
+  - first:
+      213: -1795970666215251760
+    second: Cliff_Tilesheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -108,12 +114,12 @@ TextureImporter:
       name: Cliff_Tilesheet_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 55
+        x: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -139,12 +145,12 @@ TextureImporter:
       name: Cliff_Tilesheet_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 55
+        x: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -166,12 +172,12 @@ TextureImporter:
       name: Cliff_Tilesheet_2
       rect:
         serializedVersion: 2
-        x: 37
-        y: 55
+        x: 32
+        y: 32
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -196,12 +202,12 @@ TextureImporter:
       name: Cliff_Tilesheet_3
       rect:
         serializedVersion: 2
-        x: 1
-        y: 37
+        x: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -223,12 +229,12 @@ TextureImporter:
       name: Cliff_Tilesheet_4
       rect:
         serializedVersion: 2
-        x: 19
-        y: 37
+        x: 16
+        y: 16
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,12 +250,12 @@ TextureImporter:
       name: Cliff_Tilesheet_5
       rect:
         serializedVersion: 2
-        x: 37
-        y: 37
+        x: 32
+        y: 16
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -263,6 +269,48 @@ TextureImporter:
       bones: []
       spriteID: fd64c2191f86df360800000000000000
       internalID: 7205030365594666719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cliff_Tilesheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4df7170ee590792b0800000000000000
+      internalID: -5577979310377959468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cliff_Tilesheet_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d0e73dc13e6317e0800000000000000
+      internalID: -1795970666215251760
       vertices: []
       indices: 
       edges: []
