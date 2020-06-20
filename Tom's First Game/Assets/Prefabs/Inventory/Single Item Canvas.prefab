@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 3, y: 0}
-  m_SizeDelta: {x: 16, y: 16}
+  m_SizeDelta: {x: 14, y: 14}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &2586794959848605321
 CanvasRenderer:
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b4d464720b9eed94ba6c7866b4401310, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 03a723d8efcac504896226d8331c7279, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -335,8 +335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b066dbe2e197cc46981950e1a0348a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: Apple
-  descriptionText: A Juicy Apple
 --- !u!1 &4297927713288073256
 GameObject:
   m_ObjectHideFlags: 0
