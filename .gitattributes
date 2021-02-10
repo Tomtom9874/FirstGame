@@ -1,3 +1,4 @@
 *.vb linguist-language=C#
 *.shader linguist-language=C#
 *.cginc linguist-language=C#
+"Tom's First Game\Assets\TextMesh\*" linguist-vendored=true
